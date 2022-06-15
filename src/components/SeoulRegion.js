@@ -36,7 +36,7 @@ export default function SeoulRegion({path, tooltipData, setRegeionName, Region})
   }
   
   // const { path, tooltipData } = props;
-  //console.log(tooltipData)
+  console.log(tooltipData)
   //each path defines the shape of a region in the map
   return (
     <>
@@ -63,6 +63,5 @@ export default function SeoulRegion({path, tooltipData, setRegeionName, Region})
         강서구
       </text>*/}
     </>
-    
   );
 }

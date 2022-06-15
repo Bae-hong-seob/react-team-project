@@ -26,7 +26,7 @@ export const useMapTools = function () {
     d3.select("body")
       .append("div")
       .attr("id", "tooltip")
-      .attr("style", "position: absolute; opacity: 0.5; color: red");
+      .attr("style", "position: absolute; opacity: 0.5; color: FC9797");
     ///
   }, []);
 

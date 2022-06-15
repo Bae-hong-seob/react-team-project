@@ -4,7 +4,7 @@ import * as d3 from "d3";
 export const handleMouseOver = function (tooltipData) {
   d3.select("#tooltip")
     .style("opacity", 1)
-    .style("background-color", "burlywood")
+    .style("background-color", "3F3F3F")
     .text(tooltipData);
 };
 

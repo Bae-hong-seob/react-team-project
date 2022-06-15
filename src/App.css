@@ -49,9 +49,10 @@
 .container {
   min-width: 150px;
   box-shadow: 0 4px 5px 0 #00000026;
-  position: absolute;
-  /* z-index: 10; */
+  position: relative;
+  z-index: 10;
   width: 10%;
+  margin-bottom: 10px;
 }
 
 #dropdown {
@@ -72,16 +73,16 @@
   width: auto;
   height: auto;
   position: absolute;
-  left: 88%;
+  left: 87%;
   top: 4%;
-  color:#FF7F0E;
+  color:#7f7f7f;
 }
 .label2 {
   top: 4%;
   width: auto;
   height: auto;
   position: absolute;
-  left: 94%;
+  left: 93%;
   color:#1F77B4;
 }
 
@@ -142,16 +143,22 @@
 }
 
 .third{
-  
-  
-  border : dotted;
+  border: none;
+  border-style: ridge;
+  border-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
   position: relative;
+  margin-bottom: 10px;
   
 }
 
 .fourth{
-  border : dotted;
+  border: none;
+  border-style: ridge;
+  border-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
   position: relative;
+  margin-bottom: 14px;
 }
 
 .dddd{
@@ -165,4 +172,14 @@
 
 .s{
   border: 1px;
+}
+
+.ratio{
+  display: none;
+}
+
+.school{
+  position: absolute;
+  left: 70px;
+  top: 50px;
 }

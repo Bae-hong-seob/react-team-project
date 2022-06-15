@@ -12,8 +12,9 @@ const Pie = (props) => {
     .arc()
     .innerRadius(props.innerRadius)
     .outerRadius(props.outerRadius);
-  const colors = d3.scaleOrdinal(d3.schemeCategory10);
-  const format = d3.format(".2f");
+  const colors = d3.scaleOrdinal(["#1f77b4", "#7f7f7f"]);
+  //const colors = d3.scaleOrdinal(["FE6565", "232232"]);
+  const format = d3.format(",");
 
   useEffect(() => {
     const data = createPie(props.data);

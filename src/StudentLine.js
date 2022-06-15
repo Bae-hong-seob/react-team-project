@@ -7,9 +7,9 @@ function StudentLine({ Student, Year }) {
 
   const [data, setdata] = useState(Student);
   const svgRef1 = useRef();
-  // console.log(Student);
-  // console.log(data);
-  // console.log(Year);
+  console.log(Student);
+  console.log(data);
+  console.log(Year);
   useEffect(() => {
     const svg = d3.select(svgRef1.current);
     const xScale = d3
