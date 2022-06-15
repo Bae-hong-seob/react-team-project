@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  
+  flex: 1;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -35,4 +37,132 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App h1 {
+  font-size: 2em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+
+.container {
+  min-width: 150px;
+  box-shadow: 0 4px 5px 0 #00000026;
+  position: absolute;
+  /* z-index: 10; */
+  width: 10%;
+}
+
+#dropdown {
+  left: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.dropdownLabel {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+.dropdownLabel:hover {
+  cursor: pointer;
+}
+.label1 {
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 88%;
+  top: 4%;
+  color:#FF7F0E;
+}
+.label2 {
+  top: 4%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 94%;
+  color:#1F77B4;
+}
+
+.content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 4px 5px 0 #00000026;
+}
+
+#dropdown:checked + label + div.content {
+  display: block;
+  border-top: 1px solid #00000026;
+}
+.caretIcon {
+  transition: transform 250ms ease-out;
+}
+#dropdown:checked + label > .caretIcon {
+  transform: rotate(-180deg);
+}
+
+.content ul {
+  list-style-type: none;
+  padding: 12px;
+  margin: 0;
+}
+.content ul li {
+  margin: 0.8rem 0;
+}
+
+.list:hover{
+  color: aquamarine;
+  border: 1ch;
+}
+
+.cccc{
+  width: 640px;
+  height: 480px;
+  position: relative;
+  background-color: orange;;
+}
+
+
+
+.zzz{
+  width: 320px;
+  height: 480px;
+  position: relative;
+}
+
+
+
+.second{
+  position: relative;
+  float: left;
+}
+
+.third{
+  
+  
+  border : dotted;
+  position: relative;
+  
+}
+
+.fourth{
+  border : dotted;
+  position: relative;
+}
+
+.dddd{
+  position: relative;
+}
+
+.y{
+   position: relative;
+   vertical-align: baseline;
+}
+
+.s{
+  border: 1px;
 }
