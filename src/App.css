@@ -112,7 +112,25 @@
 #dropdown:checked + label > .caretIcon {
   transform: rotate(-180deg);
 }
-
+.title {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 2rem;
+  font-weight: 800;
+}
+.guName {
+  position: absolute;
+  font-size: x-large;
+  top: 3%;
+  padding-left: 3rem;
+  padding-top: 2rem;
+}
+.Name {
+  position: absolute;
+  font-size: x-large;
+  padding-left: 3rem;
+  padding-top: 2rem;
+}
 .content ul {
   list-style-type: none;
   padding: 12px;

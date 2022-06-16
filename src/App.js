@@ -6,8 +6,8 @@ import * as d3 from "d3";
 import input_data from "./data/Report.csv";
 import AnimatedPieHooks from "./AnimatedPieHooks";
 import Bar from "./4_Bar";
-import SeoulSchool from "./Seoul_School"
-import SeoulStudent from "./Seoul_Student"
+import SeoulSchool from "./Seoul_School";
+import SeoulStudent from "./Seoul_Student";
 
 let Data = [];
 
@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     readCsv();
-  } ,[]);
+  }, []);
 
   // 서울 내 구역별 수(서울시 전체 포함) 26개
 
@@ -89,7 +89,7 @@ function App() {
   //let [year, setyear] = useState([2021]);
   const generate_total_stu = () => {
     set_total_stu([]);
-    setxlabel((x_label = [Year,2021]));
+    setxlabel((x_label = [Year, 2021]));
 
     let tmp = [];
 
@@ -115,7 +115,7 @@ function App() {
 
   const generate_num_class = () => {
     set_num_class([]);
-    setxlabel((x_label = [Year,2021]));
+    setxlabel((x_label = [Year, 2021]));
 
     let tmp = [];
 
@@ -141,7 +141,7 @@ function App() {
 
   const generate_total_teacher = () => {
     set_total_teacher([]);
-    setxlabel((x_label = [Year,2021]));
+    setxlabel((x_label = [Year, 2021]));
 
     let tmp = [];
 
@@ -167,7 +167,7 @@ function App() {
 
   const generate_num_entrant = () => {
     set_num_entrant([]);
-    setxlabel((x_label = [Year,2021]));
+    setxlabel((x_label = [Year, 2021]));
 
     let tmp = [];
 
@@ -206,6 +206,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="title">서울시 초등학생 학령인구 감소 추이 대시보드</div>
       <div className="container">
         <input id="dropdown" type="checkbox" />
         <label className="dropdownLabel" for="dropdown">
@@ -244,19 +245,23 @@ function App() {
           </ul>
         </div>
       </div>
-      <span className="Ustu"><b>총 학생수</b></span>
-      <span className="Uclass"><b>총 학교수</b></span>
+      <span className="Ustu">
+        <b>총 학생수</b>
+      </span>
+      <span className="Uclass">
+        <b>총 학교수</b>
+      </span>
       <div className="third">
         <SeoulStudent></SeoulStudent>
         <SeoulSchool></SeoulSchool>
         <span className="dddd">
-        <AnimatedPieHooks
-          data={data}
-          width={211}
-          height={300}
-          innerRadius={60}
-          outerRadius={100}
-        />
+          <AnimatedPieHooks
+            data={data}
+            width={211}
+            height={300}
+            innerRadius={60}
+            outerRadius={100}
+          />
         </span>
         <span className="label1">■ 공실수</span>
         <span className="label2">■ 학급수</span>
@@ -264,6 +269,8 @@ function App() {
       </div>
 
       <div className="fourth">
+        <div className="Name">서울시 지도</div>
+        <div className="guName">{Region}</div>
         <SeoulRegionList
           className={"y"}
           regeionName={Region}
