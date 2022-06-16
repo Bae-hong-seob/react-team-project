@@ -2,19 +2,15 @@ import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
 import "./components/4_Bar.css";
 
-let y_total_stu = [];
-
 function Bar({ x, y }) {
-  //window.location.reload();
+
   let x_label = [...x];
   let y_data = [...y];
-  let y_data2 = [10, 20];
-  y_total_stu.push(y);
 
   //let y_data = [24, 70, 35, 65, 80];
 
   //console.log(x_label)
-  //console.log(y_data);
+  console.log(y_data);
 
   const svgRef = useRef();
   const height = 240;
@@ -52,6 +48,9 @@ function Bar({ x, y }) {
 
     const colorScale = d3.scaleLinear().domain([10, 80]).range(["blue", "red"]);
 
+    const colors = ["#808080", "#FE6565"];
+    //const colors = d3.scaleOrdinal(d3.schemeCategory10);
+    console.log(colors)
     svg
       .selectAll(".bar")
       .data(y_data, (d) => d[1])
@@ -83,13 +82,15 @@ function Bar({ x, y }) {
       .style("transform", "scale(1,-1)")
       .transition()
       .duration(2000)
-      .attr("fill", "#FE6565")
+      //.attr("fill", "#FE6565")
+      .attr("fill", (d, i) => colors[i])
+      
       .attr("height", (v, i) => 500 - yScale(v));
   }, [y_data]);
 
   return (
     <>
-      <svg className="bar-canvas" ref={svgRef} width={1000} height={1000}>
+      <svg className="bar-canvas" fill={'red'} ref={svgRef} width={1000} height={1000}>
         <g className="x-axis"></g>
         <g className="y-axis"></g>
       </svg>

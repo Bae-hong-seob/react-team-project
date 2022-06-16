@@ -4,9 +4,10 @@ import React, { useRef, useEffect, useState } from "react";
 import SeoulRegionList from "./components/SeoulRegionList";
 import * as d3 from "d3";
 import input_data from "./data/Report.csv";
-import School from "./School";
 import AnimatedPieHooks from "./AnimatedPieHooks";
 import Bar from "./4_Bar";
+import SeoulSchool from "./Seoul_School"
+import SeoulStudent from "./Seoul_Student"
 
 let load_Data = [];
 
@@ -64,6 +65,7 @@ function App() {
     generate_num_class();
     generate_total_teacher();
     generate_num_entrant();
+    setNumber(newYear);
   };
 
   useEffect(() => {
@@ -105,9 +107,17 @@ function App() {
   //let [year, setyear] = useState([2021]);
   const generate_total_stu = () => {
     set_total_stu([]);
-    setxlabel((x_label = [2021, Year]));
+    //setxlabel((x_label = [2021, Year]));
+    setxlabel((x_label = [Year,2021]));
 
     let tmp = [];
+
+    for (var key in Data) {
+      var personObj = Data[key];
+      if (personObj.year === String(Year) && personObj.region === Region) {
+        tmp.push(parseInt(personObj.total_stu));
+      }
+    }
     for (var key in Data) {
       var personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
@@ -116,17 +126,12 @@ function App() {
         tmp.push(parseInt(personObj.total_stu));
       }
     }
-    for (var key in Data) {
-      var personObj = Data[key];
-      if (personObj.year === String(Year) && personObj.region === Region) {
-        tmp.push(parseInt(personObj.total_stu));
-      }
-    }
 
     setylabel((y_label = ["2021", Year]));
     set_total_stu((total_stu = [...tmp]));
     //console.log(total_stu)
   };
+
   const generate_num_class = () => {
     set_num_class([]);
     setxlabel((x_label = [2021, Year]));
@@ -209,7 +214,7 @@ function App() {
     d3.range(length).map((i) => ({ value: proportion[i + value] }));
 
   const [data, setData] = useState(generateData(0));
-
+  const [target, setNumber] = useState(2021);
   useEffect(() => {
     setData(generateData(0));
   }, [!data]);
@@ -256,8 +261,12 @@ function App() {
           </ul>
         </div>
       </div>
-      <div className="school"><School></School></div>
+      <span className="Ustu"><b>총 학생수</b></span>
+      <span className="Uclass"><b>총 학교수</b></span>
       <div className="third">
+        <SeoulStudent></SeoulStudent>
+        <SeoulSchool></SeoulSchool>
+        <span className="dddd">
         <AnimatedPieHooks
           data={data}
           width={211}
@@ -265,8 +274,10 @@ function App() {
           innerRadius={60}
           outerRadius={100}
         />
+        </span>
         <span className="label1">■ 공실수</span>
         <span className="label2">■ 학급수</span>
+        <span className="label3">{target}년</span>
       </div>
 
       <div className="fourth">
@@ -281,12 +292,12 @@ function App() {
         <Bar x={x_label} y={total_teacher}></Bar>
         <Bar x={x_label} y={num_entrant}></Bar>
 
-        <div className="forJ"> {Year} </div>
+        {/* <div className="forJ"> {Year} </div> */}
         <div className="ratio">21</div>
-        <span>총 학생수</span>
-        <span>총 학급수</span>
-        <span>총 선생님수</span>
-        <span>입학자수</span>
+        <span className="Tstu">총 학생수</span>
+        <span className="Tclass">총 학급수</span>
+        <span className="Tteacher">총 선생님수</span>
+        <span className="Tentrant">총 입학자수</span>
       </div>
     </div>
   );

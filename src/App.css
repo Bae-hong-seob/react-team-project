@@ -73,7 +73,7 @@
   width: auto;
   height: auto;
   position: absolute;
-  left: 87%;
+  left: 84%;
   top: 4%;
   color:#7f7f7f;
 }
@@ -82,10 +82,17 @@
   width: auto;
   height: auto;
   position: absolute;
-  left: 93%;
+  left: 90%;
   color:#1F77B4;
 }
-
+.label3 {
+  top: 45%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 88%;
+  
+}
 .content {
   display: none;
   position: absolute;
@@ -162,7 +169,11 @@
 }
 
 .dddd{
-  position: relative;
+  top: 20%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 83%;
 }
 
 .y{
@@ -182,4 +193,34 @@
   position: absolute;
   left: 70px;
   top: 50px;
+}
+
+.Tstu{
+  position: relative;
+  left: 140px;
+}
+
+.Tclass{
+  position: relative;
+  left: 450px;
+}
+
+.Tteacher{
+  position: relative;
+  left: 750px;
+}
+
+.Tentrant{
+  position: relative;
+  left: 1050px;
+}
+
+.Ustu{
+  position: relative;
+  left: 260px;
+}
+
+.Uclass{
+  position: relative;
+  left: 800px;
 }
