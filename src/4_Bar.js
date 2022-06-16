@@ -48,7 +48,7 @@ function Bar({ x, y }) {
 
     const colorScale = d3.scaleLinear().domain([10, 80]).range(["blue", "red"]);
 
-    const colors = ["#808080", "#FE6565"];
+    const colors = ["#FE6565","#808080"];
     //const colors = d3.scaleOrdinal(d3.schemeCategory10);
     console.log(colors)
     svg
@@ -81,7 +81,7 @@ function Bar({ x, y }) {
       .attr("width", xScale.bandwidth())
       .style("transform", "scale(1,-1)")
       .transition()
-      .duration(2000)
+      .duration(1000)
       //.attr("fill", "#FE6565")
       .attr("fill", (d, i) => colors[i])
       

@@ -52,6 +52,7 @@ function Seoul_School() {
     const yScale = d3
       .scaleLinear()
       .domain([yMinValue, yMaxValue])
+      //.domain([0, yMaxValue])
       .range([h, 0]);
 
     svg

@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import SeoulRegionList from "./components/SeoulRegionList";
 import * as d3 from "d3";
 import input_data from "./data/Report.csv";
+import School from "./School";
 import AnimatedPieHooks from "./AnimatedPieHooks";
 import Bar from "./4_Bar";
 import SeoulSchool from "./Seoul_School"
@@ -27,9 +28,6 @@ function App() {
   let [Year, setYears] = useState(2021);
   let [Region, setRegeionName] = useState("Seoul");
   //
-  let table = [];
-  let year = [];
-  let student = [];
 
   const readCsv = async () => {
     let file = await d3.csv(input_data);
@@ -118,6 +116,7 @@ function App() {
         tmp.push(parseInt(personObj.total_stu));
       }
     }
+
     for (var key in Data) {
       var personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
@@ -134,20 +133,22 @@ function App() {
 
   const generate_num_class = () => {
     set_num_class([]);
-    setxlabel((x_label = [2021, Year]));
+    setxlabel((x_label = [Year,2021]));
 
     let tmp = [];
+
+    for (var key in Data) {
+      var personObj = Data[key];
+      if (personObj.year === String(Year) && personObj.region === Region) {
+        tmp.push(parseInt(personObj.num_class));
+      }
+    }
+
     for (var key in Data) {
       var personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
-        tmp.push(parseInt(personObj.num_class));
-      }
-    }
-    for (var key in Data) {
-      var personObj = Data[key];
-      if (personObj.year === String(Year) && personObj.region === Region) {
         tmp.push(parseInt(personObj.num_class));
       }
     }
@@ -159,20 +160,22 @@ function App() {
 
   const generate_total_teacher = () => {
     set_total_teacher([]);
-    setxlabel((x_label = [2021, Year]));
+    setxlabel((x_label = [Year,2021]));
 
     let tmp = [];
+
+    for (var key in Data) {
+      var personObj = Data[key];
+      if (personObj.year === String(Year) && personObj.region === Region) {
+        tmp.push(parseInt(personObj.total_teacher));
+      }
+    }
+
     for (var key in Data) {
       var personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
-        tmp.push(parseInt(personObj.total_teacher));
-      }
-    }
-    for (var key in Data) {
-      var personObj = Data[key];
-      if (personObj.year === String(Year) && personObj.region === Region) {
         tmp.push(parseInt(personObj.total_teacher));
       }
     }
@@ -184,20 +187,22 @@ function App() {
 
   const generate_num_entrant = () => {
     set_num_entrant([]);
-    setxlabel((x_label = [2021, Year]));
+    setxlabel((x_label = [Year,2021]));
 
     let tmp = [];
+
+    for (var key in Data) {
+      var personObj = Data[key];
+      if (personObj.year === String(Year) && personObj.region === Region) {
+        tmp.push(parseInt(personObj.num_entrant));
+      }
+    }
+
     for (var key in Data) {
       var personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
-        tmp.push(parseInt(personObj.num_entrant));
-      }
-    }
-    for (var key in Data) {
-      var personObj = Data[key];
-      if (personObj.year === String(Year) && personObj.region === Region) {
         tmp.push(parseInt(personObj.num_entrant));
       }
     }
@@ -226,7 +231,7 @@ function App() {
       <div className="container">
         <input id="dropdown" type="checkbox" />
         <label className="dropdownLabel" for="dropdown">
-          <div>Years</div>
+          <div>{target}년</div>
           {/*<FaAngleDown className="caretIcon" />*/}
         </label>
         <div className="content">
@@ -289,15 +294,15 @@ function App() {
         <canvas ref={canvas1} className={"cccc"}></canvas>
         <Bar id="bar" x={x_label} y={total_stu}></Bar>
         <Bar x={x_label} y={num_class}></Bar>
-        <Bar x={x_label} y={total_teacher}></Bar>
         <Bar x={x_label} y={num_entrant}></Bar>
+        <Bar x={x_label} y={total_teacher}></Bar>
 
         {/* <div className="forJ"> {Year} </div> */}
         <div className="ratio">21</div>
         <span className="Tstu">총 학생수</span>
         <span className="Tclass">총 학급수</span>
-        <span className="Tteacher">총 선생님수</span>
-        <span className="Tentrant">총 입학자수</span>
+        <span className="Tteacher">총 입학자수</span>
+        <span className="Tentrant">총 선생님수</span>
       </div>
     </div>
   );
