@@ -12,6 +12,7 @@ import SeoulStudent from "./Seoul_Student";
 let Data = [];
 
 function App() {
+  
   // ——————————————조건문 지역별 데이터 볼 때는 region에서 seoul삭제. 혼자 값이 너무 큼.
   // 지금 complie 이전에 readcsv가 실행되지않아 받아오는 값이 없다. 따라서 App.js에서 데이터 전처리가 불가능함.
   // ——————————————여기까지 조건문 (이벤트 발생 시) slice전달. 아직 안짬
