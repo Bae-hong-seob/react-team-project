@@ -4,13 +4,12 @@ import React, { useRef, useEffect, useState } from "react";
 import SeoulRegionList from "./components/SeoulRegionList";
 import * as d3 from "d3";
 import input_data from "./data/Report.csv";
-import School from "./School";
 import AnimatedPieHooks from "./AnimatedPieHooks";
 import Bar from "./4_Bar";
 import SeoulSchool from "./Seoul_School"
 import SeoulStudent from "./Seoul_Student"
 
-let load_Data = [];
+let Data = [];
 
 function App() {
   // ——————————————조건문 지역별 데이터 볼 때는 region에서 seoul삭제. 혼자 값이 너무 큼.
@@ -22,9 +21,6 @@ function App() {
   ];
   /////// 그래프 그리기위한 코드
   // 홍섭
-  // year,region,num_school,num_class,total_stu,man_stu,women_stu,total_teacher,man_teacher,women_teacher,total_employee,man_employee,women_emplyee,num_graduate,num_entrant,area,build_area
-  //let Year = "2014";
-  // let Region = "Seoul";
   let [Year, setYears] = useState(2021);
   let [Region, setRegeionName] = useState("Seoul");
   //
@@ -33,24 +29,13 @@ function App() {
     let file = await d3.csv(input_data);
     // 홍섭
     file.map((load_csv) => {
-      load_Data.push(load_csv);
+      Data.push(load_csv);
     });
   };
 
   useEffect(() => {
     readCsv();
-  });
-
-  //오오 된다.
-  //console.log(Data[1])
-  let Data = load_Data.slice(0, 234);
-
-  // let tmp = [];
-  // Data.map((load_csv) => {
-  //   if (load_csv.region === "Seoul") tmp.push(load_csv.year);
-  // });
-  // console.log(tmp)
-  ///////////////////////////////////
+  } ,[]);
 
   // 서울 내 구역별 수(서울시 전체 포함) 26개
 
@@ -86,7 +71,6 @@ function App() {
   let [total_teacher, set_total_teacher] = useState([]);
   let [num_entrant, set_num_entrant] = useState([]);
   let [x_label, setxlabel] = useState([]);
-  let [y_label, setylabel] = useState([]);
 
   let stu_teacher_ratio;
   let RT = document.getElementsByClassName("ratio")[0];
@@ -105,7 +89,6 @@ function App() {
   //let [year, setyear] = useState([2021]);
   const generate_total_stu = () => {
     set_total_stu([]);
-    //setxlabel((x_label = [2021, Year]));
     setxlabel((x_label = [Year,2021]));
 
     let tmp = [];
@@ -117,8 +100,8 @@ function App() {
       }
     }
 
-    for (var key in Data) {
-      var personObj = Data[key];
+    for (key in Data) {
+      personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
@@ -126,7 +109,6 @@ function App() {
       }
     }
 
-    setylabel((y_label = ["2021", Year]));
     set_total_stu((total_stu = [...tmp]));
     //console.log(total_stu)
   };
@@ -144,8 +126,8 @@ function App() {
       }
     }
 
-    for (var key in Data) {
-      var personObj = Data[key];
+    for (key in Data) {
+      personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
@@ -153,7 +135,6 @@ function App() {
       }
     }
 
-    setylabel((y_label = ["2021", Year]));
     set_num_class((num_class = [...tmp]));
     //console.log(total_stu)
   };
@@ -171,8 +152,8 @@ function App() {
       }
     }
 
-    for (var key in Data) {
-      var personObj = Data[key];
+    for (key in Data) {
+      personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
@@ -180,7 +161,6 @@ function App() {
       }
     }
 
-    setylabel((y_label = ["2021", Year]));
     set_total_teacher((total_teacher = [...tmp]));
     //console.log(total_stu)
   };
@@ -198,8 +178,8 @@ function App() {
       }
     }
 
-    for (var key in Data) {
-      var personObj = Data[key];
+    for (key in Data) {
+      personObj = Data[key];
       // // personObj로 이제 Data에 json처럼 접근 가능함
 
       if (personObj.year === "2021" && personObj.region === Region) {
@@ -207,13 +187,11 @@ function App() {
       }
     }
 
-    setylabel((y_label = ["2021", Year]));
     set_num_entrant((num_entrant = [...tmp]));
     //console.log(total_stu)
   };
 
   // /////////////파이차트//////////////
-  let number = 10;
 
   const generateData = (value, length = 2) =>
     d3.range(length).map((i) => ({ value: proportion[i + value] }));

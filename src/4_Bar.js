@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import "./components/4_Bar.css";
 
 function Bar({ x, y }) {
@@ -16,7 +16,7 @@ function Bar({ x, y }) {
   const height = 240;
 
   let max = d3.max(y_data);
-  let min = d3.min(y_data);
+  //let min = d3.min(y_data);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
@@ -46,7 +46,7 @@ function Bar({ x, y }) {
     const yAxis = d3.axisRight(yScale);
     svg.select(".y-axis").style("transform", "translateX(0px)").call(yAxis);
 
-    const colorScale = d3.scaleLinear().domain([10, 80]).range(["blue", "red"]);
+    //const colorScale = d3.scaleLinear().domain([10, 80]).range(["blue", "red"]);
 
     const colors = ["#FE6565","#808080"];
     //const colors = d3.scaleOrdinal(d3.schemeCategory10);
@@ -90,7 +90,7 @@ function Bar({ x, y }) {
 
   return (
     <>
-      <svg className="bar-canvas" fill={'red'} ref={svgRef} width={1000} height={1000}>
+      <svg className="bar-canvas" ref={svgRef} width={1000} height={1000}>
         <g className="x-axis"></g>
         <g className="y-axis"></g>
       </svg>
